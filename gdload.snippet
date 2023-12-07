@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>gdload</Title>
+			<Shortcut>gdload</Shortcut>
+			<Description>Code snippet for GD.Load when loading and instantiating scenes</Description>
+			<Author>Johan Kvastad</Author>			
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>type</ID>
+					<ToolTip>type to be initialized</ToolTip>
+					<Default>var</Default>
+				</Literal>
+				<Literal>
+					<ID>name</ID>
+					<ToolTip>variable name</ToolTip>
+					<Default>myScene</Default>
+				</Literal>
+				<Literal>
+					<ID>path</ID>
+					<ToolTip>path to scene</ToolTip>
+					<Default>PATH_TO_SCENE</Default>
+				</Literal>				
+			</Declarations>
+			<Code Language="csharp" Kind="method decl"><![CDATA[
+			$type$ $name$ = GD.Load<PackedScene>($path$).Instantiate<$type$>();
+			]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

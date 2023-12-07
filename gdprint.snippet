@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>gdprint</Title>
+			<Shortcut>gdprint</Shortcut>
+			<Description>Code snippet for GD.Print when printing variables</Description>
+			<Author>Johan Kvastad</Author>			
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>variable</ID>
+					<ToolTip>variable to print</ToolTip>
+					<Default></Default>
+				</Literal>
+			</Declarations>		
+			<Code Language="csharp" Kind="method decl" Delimiter="@"><![CDATA[
+			GD.Print($"{@variable@}");
+			]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
