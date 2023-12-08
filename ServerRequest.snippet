@@ -21,7 +21,7 @@
 				</Literal>				
 			</Declarations>
 			<Code Language="csharp" Kind="method decl"><![CDATA[public void Request$name$($params$){
-				RpcId(1,MethodName.Server$name$);
+				RpcId(1,MethodName.Server$name$, $params$);
 			}
 			
 			[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
