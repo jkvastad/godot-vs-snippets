@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>RequestResponse</Title>
+			<Shortcut>RequestResponse</Shortcut>
+			<Description>Code snippet for Request/Response RPC pattern</Description>
+			<Author>Johan Kvastad</Author>			
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal>
+					<ID>Something</ID>
+					<ToolTip>Name of the Request/Response method</ToolTip>
+					<Default>Something</Default>
+				</Literal>
+				<Literal>
+					<ID>SomethingType</ID>
+					<ToolTip>Type of Something</ToolTip>
+					<Default>SomethingType</Default>
+				</Literal>
+				<Literal>
+					<ID>params</ID>
+					<ToolTip>method parameters</ToolTip>
+					<Default>params</Default>
+				</Literal>				
+			</Declarations>
+			<Code Language="csharp" Kind="method decl" Delimiter="@"><![CDATA[
+			
+			event Action? @Something@Response;
+			[Rpc(MultiplayerApi.RpcMode.AnyPeer, CallLocal = true, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
+			public void Request@Something@()
+			{
+				if (!Multiplayer.IsServer()) return;
+				string jsonOf@Something@ = JsonSerializer.Serialize(_currentGameSession!.AllPlanets, SerializerOptions);
+				
+				GD.Print($"Sending {nameof(jsonOf@Something@)}: {jsonOf@Something@}");				
+				RpcId(Multiplayer.GetRemoteSenderId(), nameof(Response@Something@), jsonOf@Something@);
+			}
+
+			[Rpc(MultiplayerApi.RpcMode.Authority, CallLocal = true, TransferMode = MultiplayerPeer.TransferModeEnum.Reliable)]
+			public void Response@Something@(string jsonOf@Something@)
+			{
+				GD.Print($"Received {nameof(jsonOf@Something@)}: {jsonOf@Something@}");				
+				@SomethingType@ @Something@ = JsonSerializer.Deserialize<@SomethingType@>(jsonOf@Something@, SerializerOptions);
+				
+				@Something@Response?.Invoke();}
+			]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
